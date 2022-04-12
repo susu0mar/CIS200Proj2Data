@@ -1,17 +1,13 @@
 // CIS200Proj2Data.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
-
+#include "Header.h"
 #include <iostream>
 #include<fstream>
+#include <algorithm> 
+#include <vector>
 using namespace std;
 
-struct job {
-
-	char priority;
-	int arrivalT;
-	int processT;
-
-};
+bool myfunc(job i, job k) { return ( i.arrivalT < k.arrivalT); }
 
 int main()
 {
@@ -35,12 +31,12 @@ int main()
 
 	}
 
-	cout << "New arrival time for A" << endl;
+	/*cout << "New arrival time for A" << endl;
 	for (int i = 0; i < 100; ++i) {
 
 		cout << a[i].priority << "  " << a[i].arrivalT << "   " << a[i].processT << endl;
 
-	}
+	}*/
 
 	job b[100];
 
@@ -54,12 +50,12 @@ int main()
 
 		b[i].arrivalT += b[j].arrivalT;
 	}
-	cout << "arrival time b" << endl;
-	for (int i = 0; i < 100; ++i) {
+	/*cout << "arrival time b" << endl;*/
+	/*for (int i = 0; i < 100; ++i) {
 
 		cout << b[i].priority << "  " << b[i].arrivalT << "   " << b[i].processT << endl;
 
-	}
+	}*/
 
 	job mergeAB[200];
 
@@ -69,7 +65,7 @@ int main()
 
 	}
 
-	for (int i = 100, int k = 0; i < 200, k < 100; i++, k++) {
+	for (int i = 100, k = 0; i < 200, k < 100; i++, k++) {
 		mergeAB[i] = b[k];
 	}
 
@@ -86,6 +82,11 @@ int main()
 
 		c[i].arrivalT += c[j].arrivalT;
 	}
+	//for (int i = 0; i < 100; ++i) {
+
+	//	cout << c[i].priority << "  " << c[i].arrivalT << "   " << c[i].processT << endl;
+
+	//}
 
 	job d[100];
 	//creating data for type d jobs
@@ -99,6 +100,11 @@ int main()
 
 		d[i].arrivalT += d[j].arrivalT;
 	}
+	/*for (int i = 0; i < 100; ++i) {
+
+		cout << d[i].priority << "  " << d[i].arrivalT << "   " << d[i].processT << endl;
+
+	}*/
 
 	//merging c and d data
 	job mergeCD[200];
@@ -109,7 +115,7 @@ int main()
 
 	}
 
-	for (int i = 100, int k = 0; i < 200, k < 100; i++, k++) {
+	for (int i = 100, k = 0; i < 200, k < 100; i++, k++) {
 		mergeCD[i] = c[k];
 	}
 
@@ -118,5 +124,19 @@ int main()
 	//finally, combining CD and AB arrays together 
 	//then fully sort after?
 
+	vector<job> name;
+	for (int i = 0; i < 200; ++i) {
+		name.push_back(mergeCD[i]);
+	}
+	for (int i = 0; i < 200; ++i) {
+		name.push_back(mergeAB[i]);
+	}
+
+	sort (name.begin(), name.end(), myfunc);
+	for (int i = 0; i < name.size(); ++i) {
+
+		cout << name[i].priority << "  " << name[i].arrivalT << "   " << name[i].processT << endl;
+
+	}
 }
 
