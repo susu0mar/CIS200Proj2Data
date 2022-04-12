@@ -100,7 +100,23 @@ int main()
 		d[i].arrivalT += d[j].arrivalT;
 	}
 
+	//merging c and d data
+	job mergeCD[200];
 
+	for (int i = 0; i < 100; ++i) {
+
+		mergeCD[i] = d[i];
+
+	}
+
+	for (int i = 100, int k = 0; i < 200, k < 100; i++, k++) {
+		mergeCD[i] = c[k];
+	}
+
+
+
+	//finally, combining CD and AB arrays together 
+	//then fully sort after?
 
 }
 
