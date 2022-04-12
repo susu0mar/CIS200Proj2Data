@@ -35,12 +35,7 @@ int main()
 
 	}
 
-	cout << "New arrival time for A" << endl;
-	for (int i = 0; i < 100; ++i) {
-
-		cout <<a[i].priority<< "  " << a[i].arrivalT << "   " << a[i].processT << endl;
-
-	}
+	
 
 	job b[100];
 
@@ -54,12 +49,7 @@ int main()
 	
 		b[i].arrivalT += b[j].arrivalT;
 	}
-	cout << "arrival time b" << endl;
-	for (int i = 0; i < 100; ++i) {
-
-		cout << b[i].priority<<"  " << b[i].arrivalT << "   " << b[i].processT << endl;
-
-	}
+	
 
 	job mergeAB[200];
 
@@ -69,7 +59,7 @@ int main()
 
 	}
 
-	for(int i = 100, int k = 0; i < 200, k < 100; i++, k++) {
+	for (int i = 100 , k = 0; i < 200, k < 100; i++, k++) {
 		mergeAB[i] = b[k];
 	}
 
@@ -109,7 +99,7 @@ int main()
 
 	}
 
-	for (int i = 100, int k = 0; i < 200, k < 100; i++, k++) {
+	for (int i = 100, k = 0; i < 200, k < 100; i++, k++) {
 		mergeCD[i] = c[k];
 	}
 
@@ -117,6 +107,60 @@ int main()
 
 	//finally, combining CD and AB arrays together 
 	//then fully sort after?
+	job fullMerge[400];
+	for (int i = 0; i < 200; ++i) {
+
+		fullMerge[i] = mergeCD[i];
+
+	}
+	for (int i = 200, k = 0; i < 400, k < 200; i++, k++) {
+		fullMerge[i] = mergeAB[k];
+	}
+	cout << "FULL ARRAY UNSORTED"<<endl;
+	for (int i = 0; i < 400; ++i) {
+
+		cout << fullMerge[i].priority << "  " << fullMerge[i].arrivalT << "   " << fullMerge[i].processT << endl;
+
+	}
+
+
+
+	//sort ascending order with arrival time
+	for (int i = 0; i < 400; i++) {
+	
+		for (int j = i + 1; j < 400; j++) {
+		
+			if (fullMerge[i].arrivalT > fullMerge[j].arrivalT) {
+				
+				job temp = fullMerge[i];
+				fullMerge[i] = fullMerge[j];
+				fullMerge[j] = temp;
+			
+			}
+		}
+	}
+
+	//sort the "sorted" with priority included
+	for (int i = 0; i < 400; i++) {
+
+		for (int j = i + 1; j < 400; j++) {
+
+			if (fullMerge[i].arrivalT == fullMerge[j].arrivalT && fullMerge[i].priority < fullMerge[j].priority) {
+
+				job temp = fullMerge[i];
+				fullMerge[i] = fullMerge[j];
+				fullMerge[j] = temp;
+
+			}
+		}
+	}
+
+	cout << "FULL ARRAY SORTED" << endl;
+	for (int i = 0; i < 400; ++i) {
+
+		cout << fullMerge[i].priority << "  " << fullMerge[i].arrivalT << "   " << fullMerge[i].processT << endl;
+
+	}
 
 }
 
