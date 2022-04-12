@@ -177,44 +177,6 @@ int main()
 
 
 
-	//sort ascending order with arrival time
-	for (int i = 0; i < 400; i++) {
-	
-		for (int j = i + 1; j < 400; j++) {
-		
-			if (fullMerge[i].arrivalT > fullMerge[j].arrivalT) {
-				
-				job temp = fullMerge[i];
-				fullMerge[i] = fullMerge[j];
-				fullMerge[j] = temp;
-			
-			}
-		}
-	}
-
-	//sort the "sorted" with priority included
-	for (int i = 0; i < 400; i++) {
-
-		for (int j = i + 1; j < 400; j++) {
-
-			if (fullMerge[i].arrivalT == fullMerge[j].arrivalT && fullMerge[i].priority < fullMerge[j].priority) {
-
-				job temp = fullMerge[i];
-				fullMerge[i] = fullMerge[j];
-				fullMerge[j] = temp;
-
-			}
-		}
-	}
-
-	cout << "FULL ARRAY SORTED" << endl;
-	for (int i = 0; i < 400; ++i) {
-
-		cout << fullMerge[i].priority << "  " << fullMerge[i].arrivalT << "   " << fullMerge[i].processT << endl;
-
-	}
-
-}
 
 
 
