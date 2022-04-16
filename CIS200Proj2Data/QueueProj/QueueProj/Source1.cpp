@@ -1,56 +1,110 @@
 #include <iostream>
 #include "Header.h"
+#include "DataFile.cpp"
 using namespace std;
 
-task* front = NULL;
-//head
-//tail
-//remove
-void insert(char prior, int clock, task** front)
-{
-	task* currPtr,
-		* insertedItem = new task;
-	insertedItem->prior = prior;
-	if (*front == NULL) {  //new list
-		insertedItem->prev = nullptr;
-		insertedItem->next = nullptr;
-		*front = insertedItem;
-	}
+ void enQueue(struct queue** head, job ndata ) {
+
+    queue* newNode = new queue; //creating new node to put data in
+    queue* last = *head;  //creating a temp pointer with head address to traverse the list until it reaches end to insert the new node
+
+    newNode->data = ndata; //giving node data
+
+    newNode->next = NULL; //setting node to null since its the last item on list
+
+    //if the list is empty, made head the new node 
+    if (*head == NULL) {
+        *head = newNode;
+        return;
+    }
+
+    //traverse the list until you reach the last node 
+    while (last->next != NULL) {
+        
+        last = last->next;
+
+    }
+
+    //set last nodes next to be our new node :D
+    last->next = newNode;
+    return;
+
+
 }
 
-//void  InsertList(char  item, node** head) {
-	task* currPtr,
-		* insertItem = new task;
-	insertItem->letr = item;
-	if (*head == NULL) {  //new list
-		insertItem->prev = nullptr;
-		insertItem->next = nullptr;
-		*head = insertItem;
-	}
-	else if ((*head)->letr > item) { //new first item in list
-		insertItem->prev = nullptr;
-		insertItem->next = (*head);
-		(*head)->prev = insertItem;
-		*head = insertItem;
-	}
-	else {
-		currPtr = *head;
-		while (currPtr->next != NULL && item > (currPtr->next)->letr)
-		{
-			currPtr = currPtr->next;
-		}
-		//either we're at the end of list or before insertion point
-		if (currPtr->next == NULL) { //end of list
-			insertItem->next = NULL;
-			insertItem->prev = currPtr;
-			currPtr->next = insertItem;
-		}
-		else { //middle 
-			of list
-				insertItem->next = currPtr->next;
-			insertItem->prev = currPtr;
-			insertItem->next->prev = insertItem;
-			currPtr->next = insertItem;
-		}
+ void dequeue(struct queue* head)
+{
+	 if (isEmpty(&head)) 
+		 return;
+	 else {
+		 //check if it is the head 
+		 queue* temp = head;
+		 head = head->next;
+		 
+		 delete temp;
+	 }
 
-		//remove
+}
+
+void InsertHead(queue** oldHead, job newJob) {
+
+	queue* newHead = new queue;
+	newHead-> data = newJob;
+	newHead->next = *oldHead;
+	*oldHead = newHead;
+
+}
+
+bool isEmpty(queue** head)
+{
+	if (*head == NULL)
+		return true;
+	else
+		return false;
+}
+ 
+job peek(queue** head) {
+
+	return (*head)-> data;
+}
+
+//TODO: SIZE OF QUEUE
+
+/* switch (tempJob.jobType)
+{
+case 'A':
+aCount++;
+break;
+case 'B':
+bCount++;
+break;
+case 'C':
+cCount++;
+break;
+case 'D':
+dCount++;
+break;
+}*/
+
+int main()
+{
+	
+	queue* regQ=NULL;
+
+	queue* priQ=NULL;
+
+
+
+	while (//data still going )
+	{
+	//insert
+	//if (fullMerge.priorty == 'D')
+	//insert in D linked list
+
+
+	//else
+	//insert in general linked List 
+	}
+
+
+}

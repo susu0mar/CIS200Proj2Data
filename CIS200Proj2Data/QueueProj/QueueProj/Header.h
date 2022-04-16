@@ -9,9 +9,7 @@ struct job {
 	int processT;
 };
 
-struct task {
-	char prior;
-	int clock;
-	task* next;
-	task* prev;
+struct queue {
+	job data; 
+	queue* next;
 };
