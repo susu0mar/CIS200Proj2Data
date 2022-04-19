@@ -5,8 +5,8 @@
 
 class CPU {
 public:
-	int idletime; //maybe make unsigned
-	int runningtime;//maybe make unsigned
+	unsigned int idletime; //maybe make unsigned
+	unsigned int runningtime;//maybe make unsigned
 	int totaljobsCompleted;
 	bool isProcessing;
 	int timecount;
@@ -14,22 +14,44 @@ public:
 
 	//functions for CPU
 
+    //default constructor
+    CPU() {
 
-};
-class Processor
-{
-private:
-	job currentJob;
-	int jobCount = 0;
-public:
-	Processor();
-	void push(job inputJob);
-	job pop();
-	bool isEmpty();
-	bool isFull();
-	bool isComplete();
-	void processJobOne();
-	job peekJob() { return currentJob; }
-	Processor();
+        idletime = 0;
+        runningtime = 0;
+        totaljobsCompleted = 0;
+        isProcessing = false;
+        timecount = 0;
+
+    }
+
+    //check if job is complete
+    bool isJobComplete()
+    {
+        if (timecount == currentJob.processT)
+        {
+            totaljobsCompleted++;
+            timecount = 0;
+            isProcessing = false;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    //add run time total in main 
+    void execution() {
+        ++timecount;
+        if (isProcessing) {
+            ++runningtime;
+        }
+        else {
+            ++idletime;
+        }
+    }
+
+
 
 };
