@@ -32,7 +32,7 @@ int main()
 
 	int ProcSize = 4;
 	vector<CPU> Proc(ProcSize);
-	int aJobT = 0, bJobT = 0, cJobT = 0; // METRICS to count job types
+	int aJobT = 0, bJobT = 0, cJobT = 0, dJobT=0; // METRICS to count job types
 	int total_jobs = 0; // METRICS to count total
 	bool processing;
 	

@@ -147,6 +147,9 @@
     <ClInclude Include="Header.h" />
     <ClInclude Include="Proc.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="logFile.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
