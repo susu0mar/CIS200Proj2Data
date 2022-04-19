@@ -32,6 +32,7 @@ public:
 	void dequeue();
 	bool isEmpty();
 	type value(); //like a peek function to see front of queue
+	void addFront(type x);
 	//maybe here or in main, write conditional to check type of job in cpu to determine priority
 
 
@@ -95,6 +96,18 @@ template<class type>
 inline type Queue<type>::value()
 {
 	return front->data;
+}
+
+template<class type>
+inline void Queue<type>::addFront(type x)
+{
+
+	queueNode* temp = new queueNode;
+	temp->data = x;
+	temp->next = front;
+	front = temp; //front is now the new node!
+
+
 }
 
 
