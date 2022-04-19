@@ -41,4 +41,7 @@
       <Filter>Source Files</Filter>
     </Text>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="logFile.txt" />
+  </ItemGroup>
 </Project>

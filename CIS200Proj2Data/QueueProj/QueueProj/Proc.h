@@ -2,8 +2,8 @@
 
 class CPU {
 public:
-	int idletime; //maybe make unsigned
-	int runningtime;//maybe make unsigned
+	unsigned int idletime; //maybe make unsigned
+	unsigned int runningtime;//maybe make unsigned
 	int totaljobsCompleted;
 	bool isProcessing;
 	int timecount;//maybe make unsigned
