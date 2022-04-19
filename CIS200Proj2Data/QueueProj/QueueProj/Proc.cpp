@@ -1,5 +1,5 @@
 //Processor.cpp
-#include "Header.h"
+
 #include "Proc.h"
 
 Processor::Processor()

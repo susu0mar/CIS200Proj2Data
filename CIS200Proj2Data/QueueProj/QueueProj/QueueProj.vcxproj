@@ -139,13 +139,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Proc.cpp" />
     <ClCompile Include="DataFile.cpp" />
-    <ClCompile Include="Source1.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Queue.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Header.h" />
+    <ClInclude Include="QueueClass.h" />
+    <ClInclude Include="JobStruct.h" />
     <ClInclude Include="Proc.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Data file.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

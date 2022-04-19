@@ -1,41 +1,7 @@
-#pragma once
 #include <iostream>
+#include "QueueClass.h"
 using namespace std;
 
-struct job {
-
-	char priority;
-	int arrivalT;
-	int processT;
-	//count??
-};
-
-//jobmetrics() - function??
-
-
-//make 2 seperate instances for priority?
-template<class type> class Queue{
-struct queueNode {
-	type data;
-	queueNode* next;
-};
-
-private: 
-	queueNode* front;
-	queueNode* back; //why is back needed?
-
-
-public:
-	int size; //total size of queue
-	Queue();
-	void enqueue(type x);
-	void dequeue();
-	bool isEmpty();
-	type value(); //like a peek function to see front of queue
-	//maybe here or in main, write conditional to check type of job in cpu to determine priority
-
-
-};
 
 template<class type>
 inline Queue<type>::Queue()
@@ -50,6 +16,7 @@ template<class type>
 inline void Queue<type>::enqueue(type x)
 {
 	queueNode* temp = new queueNode;
+	//delete temp; TODO: move to right place
 	temp->data = x;
 	if (back == NULL) {
 		back = temp;
@@ -67,7 +34,7 @@ template<class type>
 inline void Queue<type>::dequeue()
 {
 	if (front == NULL) {
-	
+
 		return;
 	}
 	//deleting first node(front node)
@@ -97,8 +64,13 @@ inline type Queue<type>::value()
 	return front->data;
 }
 
+template<class type>
+inline void Queue<type>::addFront(type x)
+{
 
+	queueNode* temp = new queueNode;
+	temp->data = x;
+	temp->next = front;
+	front = temp; //front is now the new node!
 
-
-
-
+}
