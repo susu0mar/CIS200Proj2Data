@@ -32,13 +32,17 @@ int main()
 
 	int ProcSize = 4;
 	vector<CPU> Proc(ProcSize);
+	vector<job>olist;
+	Queue<job>regQ; //for regular jobs
+	Queue<job>priQ; //for D jobs
 	int aJobT = 0, bJobT = 0, cJobT = 0, dJobT=0; // METRICS to count job types
 	int total_jobs = 0; // METRICS to count total
 	bool processing;
-	
-
+	//ifstream original Data file
+	ifstream dataFile;
+	dataFile.open("Data file.txt");
 	//log file stuff
-	fstream log;
+	ofstream log;
 	log.open("logFile.txt");
 	int maxQueueSize = 0; // what is this for
 	int totaltimeproc = 0;

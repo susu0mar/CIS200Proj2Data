@@ -98,6 +98,8 @@ inline type Queue<type>::value()
 	return front->data;
 }
 
+
+//not sure if it works
 template<class type>
 inline void Queue<type>::addFront(type x)
 {
